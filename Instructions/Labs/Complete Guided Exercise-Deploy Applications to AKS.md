@@ -9,9 +9,9 @@ Guided Exercise:
 Cet exercice guidé comprend les activités suivantes :
 
 + Exercice 1 : Provisionner Azure Container Registry (ACR) et Azure Kubernetes Service (AKS)
-+ Exercice 2 : Créer des images conteneur Linux et Windows et les stocker dans ACR
++ Exercice 2 : Créer des images conteneur Linux et Windows, puis les stocker dans ACR
 + Exercice 3 : Déployer des images conteneur sur AKS 
-+ Exercice 4 : Vérifier le déploiement et déprovisionner toutes les ressources
++ Exercice 4 : Évaluer le déploiement et déprovisionner toutes les ressources
 
 ## Exercice 1 : Provisionner Azure Container Registry (ACR) et Azure Kubernetes Service (AKS)
 Dans cet exercice, vous créez un registre de conteneurs Azure et un cluster AKS.
@@ -27,7 +27,7 @@ Dans cette tâche, vous créez un registre de conteneurs Azure
 1. À partir de votre ordinateur, ouvrez une fenêtre de navigateur web et accédez au Portail Azure à l’adresse https://portal.azure.com.
 1. Quand vous y êtes invité, connectez-vous en utilisant un compte d’utilisateur avec le rôle Propriétaire dans l’abonnement Azure que vous utilisez dans cet exercice. 
 1. Connectez-vous au portail Azure. 
-1. Dans le Portail Microsoft Azure, dans la zone de texte **Rechercher**, recherchez et sélectionnez **Registres de conteneurs**.
+1. Dans le portail Azure, dans la zone de texte **Rechercher**, recherchez et sélectionnez **Registres de conteneurs**.
 1. Dans la page **Registres de conteneurs**, sélectionnez **+ Créer** et spécifiez les paramètres suivants :
 
     |Paramètre|Valeur|
@@ -41,14 +41,14 @@ Dans cette tâche, vous créez un registre de conteneurs Azure
 
 1. Dans la page **Registres de conteneurs**, sélectionnez **Vérifier + créer** et, sous l’onglet **Vérifier + créer**, sélectionnez **Créer**.
 
-   > **Remarque :** Passez à l’exercice suivant sans attendre la fin du provisionnement du registre de conteneurs Azure.
+   > **Remarque :** Passez à l’exercice suivant sans attendre la fin du provisionnement d’Azure Container Registry.
 
 ### Tâche 2 : Créer un réseau virtuel Azure et un cluster AKS
 Dans cette tâche, vous créez un réseau virtuel Azure et déployez un cluster AKS comprenant un pool de nœuds Windows dans ce réseau virtuel.
 
 > **Remarque :** Même si vous pouvez créer un réseau virtuel pendant le provisionnement d’un cluster AKS, il ne s’agit pas d’un scénario classique. Par ailleurs, le déploiement de clusters AKS dans un réseau virtuel existant nécessite des considérations supplémentaires que vous devez connaître.
 
-1. Dans le Portail Microsoft Azure, dans la zone de texte **Rechercher**, recherchez et sélectionnez **Réseaux virtuels**.
+1. Dans le portail Azure, dans la zone de texte **Rechercher**, recherchez et sélectionnez **Réseaux virtuels**.
 1. Dans la page **Réseaux virtuels**, sélectionnez **+ Créer**, puis, sous l’onglet **Informations de base** de la page **Créer un réseau virtuel**, spécifiez les paramètres suivants :
 
     |Paramètre|Valeur|
@@ -64,21 +64,21 @@ Dans cette tâche, vous créez un réseau virtuel Azure et déployez un cluster 
 
    > **Remarque :** La création d’un réseau virtuel devant durer seulement quelques secondes, vous devez pouvoir passer directement à l’étape suivante.
 
-1. Dans le Portail Microsoft Azure, dans la zone de texte **Rechercher**, recherchez et sélectionnez **Services Kubernetes**.
+1. Dans le portail Azure, dans la zone de texte **Rechercher**, recherchez et sélectionnez **Services Kubernetes**.
 1. Dans la page **Services Kubernetes**, sélectionnez **+ Créer**, dans la liste déroulante, sélectionnez **Créer un cluster Kubernetes**, puis, sous l’onglet **Informations de base** de la page **Créer un cluster Kubernetes**, spécifiez les paramètres suivants :
 
     |Paramètre|Valeur|
     |---|---|
     |Abonnement|Nom de l’abonnement Azure que vous avez sélectionné dans le premier exercice|
     |Groupe de ressources|**aks-01-RG**|
-    |Configuration prédéfinie du cluster|**Développement/Test**|
+    |Configuration prédéfinie du cluster|**Dev/Test**|
     |Nom du cluster Kubernetes|**aks-01**|
     |Région|Même région Azure que vous avez sélectionnée dans le premier exercice|
     |Zones de disponibilité|**Aucun**|
     |Niveau tarifaire AKS|**Gratuit**|
     |Version de Kubernetes|Accepter la valeur par défaut|
-    |Mise à jour automatique|Désactivé|
-    |Taille du nœud|**Standard B4ms**|
+    |Mise à niveau automatique|Désactivé|
+    |Taille du nœud|**Standard B4ms**|
     |Méthode de mise à l’échelle|**Manuel**|
     |Nombre de nœuds|**2**|
 
@@ -101,7 +101,7 @@ Dans cette tâche, vous créez un réseau virtuel Azure et déployez un cluster 
 
     |Paramètre|Valeur|
     |---|---|
-    |Sous-réseau de cluster|**aks-subnet (10.0.0.0/20)**|
+    |Sous-réseau de cluster|**aks-subnet (10.0.0.0/20)**|
     |Plage d’adresses de service Kubernetes|**172.16.0.0/22**|
     |Adresse IP du service DNS Kubernetes|**172.16.3.254**|
     |Préfixe du nom DNS|**aks-01-dns**|
@@ -123,7 +123,7 @@ Dans cette tâche, vous créez un réseau virtuel Azure et déployez un cluster 
     |Type de système d’exploitation|**Windows**|
     |Zone de disponibilité|**Aucun**|
     |Activer les instances Azure Spot|Désactivé|
-    |Taille du nœud|**Standard B4s_v2**|
+    |Taille du nœud|**Standard B4s_v2**|
     |Méthode de mise à l’échelle|**Manuel**|
     |Nombre de nœuds|**2**|
     |Pods maximum par nœud|**30**|
@@ -244,7 +244,7 @@ Dans cette tâche, vous utilisez une tâche ACR pour créer une image conteneur 
    > **Remarque :** Suivez la progression de la génération et vérifiez qu’elle se termine correctement. L’opération doit durer moins de 3 minutes.
 
 1. Fermez le volet Azure Cloud Shell.
-1. Dans le Portail Microsoft Azure, accédez à la page **Registres de conteneurs** et sélectionnez l’entrée représentant le registre de conteneurs dans lequel vous avez poussé les deux images.
+1. Dans le portail Azure, accédez à la page **Registres de conteneurs** et sélectionnez l’entrée représentant le registre de conteneurs dans lequel vous avez poussé les deux images.
 1. Dans la page Registre de conteneurs, dans le menu hub vertical, sélectionnez **Dépôts** et vérifiez que **hellofromnode** et **hellofromdotnet** s’affichent dans la liste des dépôts.
 
 ## Exercice 3 : Déployer des images conteneur sur AKS 
@@ -255,7 +255,7 @@ Dans cet exercice, vous allez déployer deux images conteneurs que vous avez cr�
 ### Tâche 1 : Créer des espaces de noms AKS personnalisés
 Dans cette tâche, vous allez créer deux espaces de noms sur le cluster AKS que vous avez créé précédemment dans cet exercice.
 
-1. Dans le Portail Microsoft Azure, dans la zone de texte **Rechercher**, recherchez et sélectionnez **Services Kubernetes**.
+1. Dans le portail Azure, dans la zone de texte **Rechercher**, recherchez et sélectionnez **Services Kubernetes**.
 1. Dans la page **Services Kubernetes**, sélectionnez **aks-01**.
 1. Dans la page **aks-01**, dans le menu vertical, sélectionnez **Espaces de noms**.
 1. Dans la page **Espaces de noms \| a-01**, sélectionnez **+ Créer** et, dans le menu déroulant, sélectionnez **Espace de noms**.
@@ -434,32 +434,32 @@ Dans cette tâche, vous allez déployer les deux images conteneurs dans leurs es
 
    > **Note :** passez à l’étape suivante sans attendre que le déploiement se termine. Le provisionnement de toutes les ressources peut prendre quelques minutes.
 
-# Exercice 4 : Vérifier le déploiement et déprovisionner toutes les ressources
-Dans cet exercice, vous examinerez les résultats des déploiements et déprovisionnerez toutes les ressources.
+# Exercice 4 : Évaluer le déploiement et déprovisionner toutes les ressources
+Dans cet exercice, vous allez examiner les résultats des déploiements et déprovisionner toutes les ressources.
 
-### Tâche 1 : examiner les déploiements et les services AKS
-Dans cette tâche, vous examinerez les résultats des deux déploiements, y compris les objets de déploiements et de services.
+### Tâche 1 : Évaluer les déploiements et les services AKS
+Dans cette tâche, vous allez examiner les résultats des deux déploiements, y compris les objets de déploiements et de services.
 
-1. À partir de la session Bash d'Azure Cloud Shell, affichez l’état des deux déploiements en exécutant les commandes suivantes :
+1. À partir de la session Bash d’Azure Cloud Shell, affichez l’état des deux déploiements en exécutant les commandes suivantes :
 
    ```kubectl
    kubectl get deployments -n=dev-node
    kubectl get deployments -n=dev-dotnet
    ```
 
-   > **Note :** avant de passer à l’étape suivante, vérifiez que les deux déploiements sont répertoriés avec l’état prêt. Si ce n'est pas le cas, attendez encore une minute, exécutez à nouveau les deux commandes susmentionnées et vérifiez à nouveau l'état du déploiement.
+   > **Remarque :** Avant de passer à l’étape suivante, vérifiez que les deux déploiements sont répertoriés avec l’état prêt. Si ce n’est pas le cas, attendez encore une minute, exécutez à nouveau les deux commandes susmentionnées et vérifiez à nouveau l’état des déploiements.
 
-1. À partir de la session Bash d'Azure Cloud Shell, affichez l'état des deux services inclus dans les fichiers manifestes en exécutant les commandes suivantes :
+1. À partir de la session Bash d’Azure Cloud Shell, affichez l’état des deux services inclus dans les fichiers manifestes en exécutant les commandes suivantes :
 
    ```kubectl
    kubectl get services -n=dev-node
    kubectl get services -n=dev-dotnet
    ```
 
-1. Vérifiez que la liste de chaque service inclut une valeur dans la colonne **EXTERNAL-IP**. 
-1. Utilisez un navigateur web pour accéder aux adresses IP que vous avez identifiées à l’étape précédente et vérifier que les pages web résultantes affichent les messages **Hello World from Node** et **Hello World from .Net 7**, respectivement.
+1. Assurez-vous que la liste de chaque service contient une valeur dans la colonne **EXTERNAL-IP**. 
+1. Utilisez un navigateur web pour accéder aux adresses IP que vous avez identifiées à l’étape précédente, puis assurez-vous que les pages web résultantes affichent respectivement les messages **Hello World from Node** et **Hello World from .Net 7**.
 
-### Tâche 2 : supprimer toutes les ressources
+### Tâche 2 : Supprimer toutes les ressources
 Dans cette tâche, vous allez supprimer toutes les ressources provisionnées dans cet exercice.
 
 1. À partir de la session Bash d’Azure Cloud Shell, affichez la liste des ressources dans les deux groupes de ressources provisionnés dans cet exercice en exécutant les commandes suivantes :
@@ -469,9 +469,9 @@ Dans cette tâche, vous allez supprimer toutes les ressources provisionnées dan
    az resource list --resource-group 'aks-01-RG' --query "[].name" --output tsv
    ```
 
-   > **Note :** vérifiez qu’il s’agit des ressources que vous souhaitez supprimer. Si c’est le cas, passez à l'étape suivante.
+   > **Remarque :** Assurez-vous qu’il s’agit des ressources que vous souhaitez supprimer. Si c’est le cas, passez à l’étape suivante.
 
-1. Depuis la session Bash d'Azure Cloud Shell, supprimez toutes les ressources provisionnées dans cet exercice en exécutant les commandes suivantes :
+1. Depuis la session Bash d’Azure Cloud Shell, supprimez toutes les ressources provisionnées dans cet exercice en exécutant les commandes suivantes :
 
    ```azurecli
    az group delete --name 'acr-01-RG' --no-wait --yes

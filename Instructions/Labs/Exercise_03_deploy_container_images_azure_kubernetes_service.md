@@ -10,9 +10,9 @@ Exercise:
 Ce projet guidé comprend les exercices suivants :
 
 + Exercice 1 : Provisionner Azure Container Registry (ACR) et Azure Kubernetes Service (AKS).
-+ Exercice 2 : Créer des images conteneur Linux et Windows et les stocker dans Azure Container Registry.
-+ **Exercice 3 : Déployer des images conteneur sur Azure Kubernetes Service.**
-+ Exercice 4 : Vérifier le déploiement et déprovisionner toutes les ressources.
++ Exercice 2 : Créer des images conteneur Linux et Windows et stockage de ces images dans Azure Container Registry.
++ **Exercise 3 : Déployer des images conteneurs vers Azure Kubernetes Service.**
++ Exercice 4 : évaluer le déploiement et déprovisionner toutes les ressources.
 
 Dans cet exercice, vous déployez des images conteneur sur Azure Kubernetes Service.
 
@@ -25,7 +25,7 @@ Dans cet exercice, vous allez déployer deux images conteneurs que vous avez cr�
 ### Tâche 1 : Créer des espaces de noms AKS personnalisés
 Dans cette tâche, vous allez créer deux espaces de noms sur le cluster AKS que vous avez créé précédemment dans ce laboratoire.
 
-1. Dans le Portail Microsoft Azure, dans la zone de texte **Rechercher**, recherchez et sélectionnez **Services Kubernetes**.
+1. Dans le portail Azure, dans la zone de texte **Rechercher**, recherchez et sélectionnez **Services Kubernetes**.
 1. Dans la page **Services Kubernetes**, sélectionnez **aks-01**.
 1. Dans la page **aks-01**, dans le menu vertical, sélectionnez **Espaces de noms**.
 1. Dans la page **Espaces de noms \| a-01**, sélectionnez **+ Créer** et, dans le menu déroulant, sélectionnez **Espace de noms**.
