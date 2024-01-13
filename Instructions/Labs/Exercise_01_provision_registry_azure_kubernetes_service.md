@@ -11,8 +11,8 @@ Exercise:
 Ce projet guidé comprend les exercices suivants :
 
 + **Exercice 1 : Provisionner Azure Container Registry (ACR) et Azure Kubernetes Service (AKS).**
-+ Exercice 2 : Créer des images conteneur Linux et Windows et les stocker dans Azure Container Registry.
-+ Exercice 3 : Déployer des images conteneur sur Azure Kubernetes Service.
++ Exercice 2 : Créer des images conteneur Linux et Windows et stockage de ces images dans Azure Container Registry.
++ Exercise 3 : Déployer des images conteneurs vers Azure Kubernetes Service.
 + Exercice 4 : Vérifier le déploiement et déprovisionner toutes les ressources.
 
 Dans cet exercice, vous provisionnez des ressources Azure Container Registry et Azure Kubernetes Service.
@@ -72,13 +72,13 @@ Dans cette tâche, vous créez un réseau virtuel Azure et déployez un cluster 
     |---|---|
     |Abonnement|Nom de l’abonnement Azure que vous avez sélectionné dans le premier exercice de ce labo|
     |Groupe de ressources|**aks-01-RG**|
-    |Configuration prédéfinie du cluster|**Développement/Test**|
+    |Configuration prédéfinie du cluster|**Dev/Test**|
     |Nom du cluster Kubernetes|**aks-01**|
     |Région|Même région Azure que vous avez sélectionnée dans le premier exercice de ce labo|
     |Zones de disponibilité|**Aucun**|
     |Niveau tarifaire AKS|**Gratuit**|
     |Version de Kubernetes|Accepter la valeur par défaut|
-    |Mise à jour automatique|Désactivé|
+    |Mise à niveau automatique|Désactivé|
     |Taille du nœud|**Standard B4ms**|
     |Méthode de mise à l’échelle|**Manuel**|
     |Nombre de nœuds|**2**|
