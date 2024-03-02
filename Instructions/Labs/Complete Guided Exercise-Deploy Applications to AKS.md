@@ -51,12 +51,12 @@ Dans cette tâche, vous créez un réseau virtuel Azure et déployez un cluster 
 1. Dans le portail Azure, dans la zone de texte **Rechercher**, recherchez et sélectionnez **Réseaux virtuels**.
 1. Dans la page **Réseaux virtuels**, sélectionnez **+ Créer**, puis, sous l’onglet **Informations de base** de la page **Créer un réseau virtuel**, spécifiez les paramètres suivants :
 
-    |Paramètre|Valeur|
-    |---|---|
-    |Abonnement|Nom de l’abonnement Azure que vous avez sélectionné dans le premier exercice|
-    |Groupe de ressources|Nom d’un nouveau groupe de ressources **aks-01-RG**|
-    |Nom du réseau virtuel|**vnet-01**|
-    |Région|Même région Azure que vous avez sélectionnée dans le premier exercice de cet exercice|
+   |Paramètre|Valeur|
+   |---|---|
+   |Abonnement|Nom de l’abonnement Azure que vous avez sélectionné dans le premier exercice|
+   |Groupe de ressources|Nom d’un nouveau groupe de ressources **aks-01-RG**|
+   |Nom du réseau virtuel|**vnet-01**|
+   |Région|Même région Azure que vous avez sélectionnée dans le premier exercice de cet exercice|
 
 1. Sous l’onglet **Informations de base** de la page **Créer un réseau virtuel**, sélectionnez **Suivant**.
 1. Sous l’onglet **Sécurité** de la page **Créer un réseau virtuel**, acceptez les paramètres par défaut et sélectionnez **Suivant**.
@@ -65,75 +65,80 @@ Dans cette tâche, vous créez un réseau virtuel Azure et déployez un cluster 
    > **Remarque :** La création d’un réseau virtuel devant durer seulement quelques secondes, vous devez pouvoir passer directement à l’étape suivante.
 
 1. Dans le portail Azure, dans la zone de texte **Rechercher**, recherchez et sélectionnez **Services Kubernetes**.
-1. Dans la page **Services Kubernetes**, sélectionnez **+ Créer**, dans la liste déroulante, sélectionnez **Créer un cluster Kubernetes**, puis, sous l’onglet **Informations de base** de la page **Créer un cluster Kubernetes**, spécifiez les paramètres suivants :
+1. Dans la page **Services Kubernetes**, sélectionnez **+ Créer**, dans la liste déroulante, sélectionnez **Créer un cluster Kubernetes**, puis, sous l’onglet **Informations de base** de la page **Créer un cluster Kubernetes**, spécifiez les paramètres suivants et sélectionnez **Suivant** :
 
-    |Paramètre|Valeur|
-    |---|---|
-    |Abonnement|Nom de l’abonnement Azure que vous avez sélectionné dans le premier exercice|
-    |Groupe de ressources|**aks-01-RG**|
-    |Configuration prédéfinie du cluster|**Dev/Test**|
-    |Nom du cluster Kubernetes|**aks-01**|
-    |Région|Même région Azure que vous avez sélectionnée dans le premier exercice|
-    |Zones de disponibilité|**Aucun**|
-    |Niveau tarifaire AKS|**Gratuit**|
-    |Version de Kubernetes|Accepter la valeur par défaut|
-    |Mise à niveau automatique|Désactivé|
-    |Taille du nœud|**Standard B4ms**|
-    |Méthode de mise à l’échelle|**Manuel**|
-    |Nombre de nœuds|**2**|
+   |Paramètre|Valeur|
+   |---|---|
+   |Abonnement|Nom de l’abonnement Azure que vous avez sélectionné dans le premier exercice de ce labo|
+   |Groupe de ressources|**aks-01-RG**|
+   |Configuration prédéfinie du cluster|**Dev/Test**|
+   |Nom du cluster Kubernetes|**aks-01**|
+   |Région|Même région Azure que vous avez sélectionnée dans le premier exercice de ce labo|
+   |Zones de disponibilité|**Aucun**|
+   |Niveau tarifaire AKS|**Gratuit**|
+   |Version de Kubernetes|Accepter la valeur par défaut|
+   |Mise à niveau automatique|Désactivé|
+   |Type de canal de sécurité du nœud|**Aucun**|
+   |Authentification et autorisation|**Comptes locaux avec RBAC Kubernetes**|
+
+1. Sous l’onglet **Pools de nœuds** de la page **Créer un cluster Kubernetes**, effectuez les tâches suivantes :
+
+   - Dans la section **Pools de nœuds**, sélectionnez le lien ** agentpool**.
+   - Dans la page **Mettre à jour le pool de nœuds**, dans la section **Taille de nœud**, sélectionnez le lien **Choisir une taille**.
+   - Dans la page **Sélectionner une taille de machine virtuelle**, dans la liste des tailles de machine virtuelle, sélectionnez **B4ms**, puis cliquez sur **Sélectionner**.
+   - De retour dans la page **Mettre à jour le pool de nœuds**, définissez **Méthode de mise à l’échelle** sur **Manuelle** et **Nombre de nœuds** sur **2**.
+   - Dans la page **Mettre à jour le pool de nœuds**, sélectionnez **Mettre à jour**.
 
    > **Remarque :** Vous devez peut-être augmenter les quotas de processeur virtuel ou changer la référence SKU VM pour prendre en charge la taille de nœud et le nombre de nœuds. Pour plus d’informations sur la procédure d’augmentation des quotas de processeurs virtuels, consultez l’article Microsoft Learn [Augmenter les quotas de processeurs virtuels d’une famille VM](https://learn.microsoft.com/en-us/azure/quotas/per-vm-quota-requests).
 
-1. Sous l’onglet **Informations de base** de la page **Créer un cluster Kubernetes**, sélectionnez **Suivant : Pools de nœuds >** .
-1. Sous l’onglet **Pools de nœuds** de la page **Créer un cluster Kubernetes**, sélectionnez **Suivant : Accès >** .
-1. Sous l’onglet **Accès** de la page **Créer un cluster Kubernetes**, sélectionnez **Suivant : Réseau >** .
-1. Sous l’onglet **Réseau** de la page **Créer un cluster Kubernetes**, sélectionnez l’option **Azure CNI**, dans la liste déroulante **Réseau virtuel**, sélectionnez **vnet-01**, puis, sous la zone de texte **Sous-réseau du cluster**, sélectionnez **Configuration du sous-réseau managé**.
+   > **Remarque :** Vous ajoutez un pool de nœuds Windows au cluster. Cela nécessite de remplacer la configuration réseau par défaut **Kubenet** par **Azure CNI**. La configuration réseau Kubenet ne prend pas en charge les pools de nœuds Windows.
+
+1. De retour sous l’onglet **Pools de nœuds** de la page **Créer un cluster Kubernetes**, sélectionnez **Suivant**.
+1. Sous l’onglet **Mise en réseau** de la page **Créer un cluster Kubernetes**, sélectionnez l’option **Azure CNI**. Cochez la case **Apporter votre propre réseau virtuel**, puis sélectionnez **vnet-01** dans la liste déroulante **Réseau virtuel**. Sous la zone de texte **Sous-réseau du cluster**, sélectionnez **Gérer la configuration du sous-réseau**.
 1. Dans la page **vnet-01 \| Sous-réseaux**, sélectionnez **+ Sous-réseau**.
 1. Dans la page **Ajouter des sous-réseaux**, spécifiez les paramètres suivants et sélectionnez **Enregistrer** :
 
-    |Paramètre|Valeur|
-    |---|---|
-    |Nom|**aks-subnet**|
-    |Plage d’adresses de sous-réseau|**10.0.0.0/20**|
+   |Paramètre|Valeur|
+   |---|---|
+   |Nom|**aks-subnet**|
+   |Plage d’adresses de sous-réseau|**10.0.0.0/20**|
 
 1. De retour sur la page **vnet-01 \| Sous-réseaux**, dans la barre de navigation en haut à gauche de la page, sélectionnez **Créer un cluster Kubernetes**. 
 1. De retour sous l’onglet **Réseau** de la page **Créer un cluster Kubernetes**, spécifiez les paramètres suivants :
 
-    |Paramètre|Valeur|
-    |---|---|
-    |Sous-réseau de cluster|**aks-subnet (10.0.0.0/20)**|
-    |Plage d’adresses de service Kubernetes|**172.16.0.0/22**|
-    |Adresse IP du service DNS Kubernetes|**172.16.3.254**|
-    |Préfixe du nom DNS|**aks-01-dns**|
-    |Activer le cluster privé|Désactivé|
-    |Définir des plages d’adresses IP autorisées|Désactivé|
-    |Stratégie réseau|**Aucun**|
+   |Paramètre|Valeur|
+   |---|---|
+   |Réseau virtuel|**vnet-01**|
+   |Sous-réseau de cluster|**aks-subnet (10.0.0.0/20)**|
+   |Plage d’adresses de service Kubernetes|**172.16.0.0/22**|
+   |Adresse IP du service DNS Kubernetes|**172.16.3.254**|
+   |Préfixe du nom DNS|**aks-01-dns**|
+   |Stratégie réseau|**Aucun**|
 
-1. Sous l’onglet **Réseau** de la page **Créer un cluster Kubernetes**, sélectionnez l’onglet **Pools de nœuds**.
-
-   > **Remarque :** Vous ajoutez un pool de nœuds Windows au cluster. Cela nécessite de remplacer la configuration réseau par défaut **Kubenet** par **Azure CNI**. La configuration réseau Kubenet ne prend pas en charge les pools de nœuds Windows.
-
-1. Sous l’onglet **Pools de nœuds** de la page **Créer un cluster Kubernetes**, sélectionnez **+ Ajouter un pool de nœuds**.
+1. Sous l’onglet **Mise en réseau** de la page **Créer un cluster Kubernetes**, sélectionnez **Précédent**.
+1. De retour sous l’onglet **Pools de nœuds** de la page **Créer un cluster Kubernetes**, sélectionnez **+ Ajouter un pool de nœuds**.
 1. Dans la page **Ajouter un pool de nœuds**, spécifiez les paramètres suivants :
 
-    |Paramètre|Valeur|
-    |---|---|
-    |Nom du pool de nœuds|**w1pool**|
-    |Mode|**Utilisateur**|
-    |Type de système d’exploitation|**Windows**|
-    |Zone de disponibilité|**Aucun**|
-    |Activer les instances Azure Spot|Désactivé|
-    |Taille du nœud|**Standard B4s_v2**|
-    |Méthode de mise à l’échelle|**Manuel**|
-    |Nombre de nœuds|**2**|
-    |Pods maximum par nœud|**30**|
-    |Activer l’IP publique par nœud|Désactivé|
+   |Paramètre|Valeur|
+   |---|---|
+   |Nom du pool de nœuds|**w1pool**|
+   |Mode|**Utilisateur**|
+   |Type de système d’exploitation|**Windows 2022**|
+   |Zone de disponibilité|**Aucun**|
+   |Activer les instances Azure Spot|Désactivé|
+   |Taille du nœud|**B4ms**|
+   |Méthode de mise à l’échelle|**Manuel**|
+   |Nombre de nœuds|**2**|
+   |Pods maximum par nœud|**30**|
+   |Activer l’IP publique par nœud|Désactivé|
 
-   > **Remarque :** Vous devez peut-être augmenter les quotas de processeur virtuel ou changer la référence SKU VM pour prendre en charge la taille de nœud et le nombre de nœuds. Pour plus d’informations sur la procédure d’augmentation des quotas de processeurs virtuels, consultez l’article Microsoft Learn [Augmenter les quotas de processeurs virtuels d’une famille VM](https://learn.microsoft.com/en-us/azure/quotas/per-vm-quota-requests).
+   > **Remarque :** Ici aussi, vous devrez probablement augmenter les quotas de processeur virtuel ou changer la référence SKU de machine virtuelle pour prendre en charge la taille de nœud et le nombre de nœuds.
 
 1. Dans la page **Ajouter un pool de nœuds**, sélectionnez **Ajouter**.
-1. De retour sous l’onglet **Pools de nœuds** de la page **Créer un cluster Kubernetes**, sélectionnez l’onglet **Intégrations**.
-1. Sous l’onglet **Intégration** de la page **Créer un cluster Kubernetes**, dans la liste déroulante **Registre de conteneurs**, sélectionnez l’entrée représentant le registre de conteneurs Azure que vous avez créé dans l’exercice précédent, décochez la case **Activer les règles d’alerte recommandées**, vérifiez que l’option **Azure Policy** est désactivée, puis sélectionnez **Vérifier + créer**.
+1. De retour sous l’onglet **Pools de nœuds** de la page **Créer un cluster Kubernetes**, sélectionnez **Suivant**.
+1. Sous l’onglet **Réseau** de la page **Créer un cluster Kubernetes**, sélectionnez **Suivant**.
+1. Sous l’onglet **Intégration** de la page **Créer un cluster Kubernetes**, dans la liste déroulante **Registre de conteneurs**, sélectionnez l’entrée représentant le registre de conteneurs Azure créé dans l’exercice précédent, décochez la case **Activer les règles d’alerte recommandées**, assurez-vous de la désactivation de l’option **Azure Policy** et sélectionnez **Suivant**.
+1. Sous l’onglet **Surveillance** de la page **Créer un cluster Kubernetes**, décochez la case **Activer les métriques Prometheus** et sélectionnez **Vérifier + créer**.
 1. Sous l’onglet **Vérifier + créer** de la page **Créer un cluster Kubernetes**, sélectionnez **Créer**.
 
    > **Remarque :** Passez à l’exercice suivant sans attendre la fin du provisionnement du cluster AKS. Le processus de provisionnement peut prendre environ 5 minutes.
