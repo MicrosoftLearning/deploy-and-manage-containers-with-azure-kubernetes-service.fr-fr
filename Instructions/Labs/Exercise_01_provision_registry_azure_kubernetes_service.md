@@ -36,9 +36,9 @@ Dans cette tâche, vous créez un registre de conteneurs Azure
    |Abonnement|Nom de l’abonnement Azure que vous utilisez dans ce labo|
    |Groupe de ressources|Nom d’un nouveau groupe de ressources **acr-01-RG**|
    |Nom du registre|Nom globalement unique valide de 5 à 50 caractères alphanumériques|
-   |Région|Région Azure dans laquelle vous pouvez créer un registre de conteneurs Azure et un cluster AKS|
-   |Zones de disponibilité|**Aucun**|
-   |SKU|**De base**|
+   |Emplacement|Région Azure dans laquelle vous pouvez créer un registre de conteneurs Azure et un cluster AKS|
+   |Utiliser des zones de disponibilité|Désactivé|
+   |Plan tarifaire|**De base**|
 
 1. Dans la page **Registres de conteneurs**, sélectionnez **Vérifier + créer** et, sous l’onglet **Vérifier + créer**, sélectionnez **Créer**.
 
@@ -86,7 +86,7 @@ Dans cette tâche, vous allez créer un réseau virtuel Azure et y déployer un 
 
    - Dans la section **Pools de nœuds**, sélectionnez le lien ** agentpool**.
    - Dans la page **Mettre à jour le pool de nœuds**, dans la section **Taille de nœud**, sélectionnez le lien **Choisir une taille**.
-   - Dans la page **Sélectionner une taille de machine virtuelle**, dans la liste des tailles de machine virtuelle, sélectionnez **B4ms**, puis cliquez sur **Sélectionner**.
+   - Dans la page **Sélectionner une taille de machine virtuelle**, dans la liste des tailles de machine virtuelle, sélectionnez **D2s_v3**, puis cliquez sur **Sélectionner**.
    - De retour dans la page **Mettre à jour le pool de nœuds**, définissez **Méthode de mise à l’échelle** sur **Manuelle** et **Nombre de nœuds** sur **2**.
    - Dans la page **Mettre à jour le pool de nœuds**, sélectionnez **Mettre à jour**.
 
@@ -95,7 +95,7 @@ Dans cette tâche, vous allez créer un réseau virtuel Azure et y déployer un 
    > **Remarque :** Vous ajoutez un pool de nœuds Windows au cluster. Cela nécessite de remplacer la configuration réseau par défaut **Kubenet** par **Azure CNI**. La configuration réseau Kubenet ne prend pas en charge les pools de nœuds Windows.
 
 1. De retour sous l’onglet **Pools de nœuds** de la page **Créer un cluster Kubernetes**, sélectionnez **Suivant**.
-1. Sous l’onglet **Mise en réseau** de la page **Créer un cluster Kubernetes**, sélectionnez l’option **Azure CNI**. Cochez la case **Apporter votre propre réseau virtuel**, puis sélectionnez **vnet-01** dans la liste déroulante **Réseau virtuel**. Sous la zone de texte **Sous-réseau du cluster**, sélectionnez **Gérer la configuration du sous-réseau**.
+1. Sous l’onglet **Mise en réseau** de la page **Créer un cluster Kubernetes**, vérifiez que l’option **Azure CNI** est sélectionnée, cochez la case **Apporter votre propre réseau virtuel** puis, dans la liste déroulante **Réseau virtuel**, sélectionnez **vnet-01** et, sous la zone de texte **Sous-réseau du cluster**, sélectionnez **Gérer la configuration du sous-réseau**.
 1. Dans la page **vnet-01 \| Sous-réseaux**, sélectionnez **+ Sous-réseau**.
 1. Dans la page **Ajouter des sous-réseaux**, spécifiez les paramètres suivants et sélectionnez **Enregistrer** :
 
@@ -127,7 +127,7 @@ Dans cette tâche, vous allez créer un réseau virtuel Azure et y déployer un 
    |Type de système d’exploitation|**Windows 2022**|
    |Zone de disponibilité|**Aucun**|
    |Activer les instances Azure Spot|Désactivé|
-   |Taille du nœud|**B4ms**|
+   |Taille du nœud|**D2s_v3**|
    |Méthode de mise à l’échelle|**Manuel**|
    |Nombre de nœuds|**2**|
    |Pods maximum par nœud|**30**|
@@ -138,8 +138,8 @@ Dans cette tâche, vous allez créer un réseau virtuel Azure et y déployer un 
 1. Dans la page **Ajouter un pool de nœuds**, sélectionnez **Ajouter**.
 1. De retour sous l’onglet **Pools de nœuds** de la page **Créer un cluster Kubernetes**, sélectionnez **Suivant**.
 1. Sous l’onglet **Réseau** de la page **Créer un cluster Kubernetes**, sélectionnez **Suivant**.
-1. Sous l’onglet **Intégration** de la page **Créer un cluster Kubernetes**, dans la liste déroulante **Registre de conteneurs**, sélectionnez l’entrée représentant le registre de conteneurs Azure créé dans l’exercice précédent, décochez la case **Activer les règles d’alerte recommandées**, assurez-vous de la désactivation de l’option **Azure Policy** et sélectionnez **Suivant**.
-1. Sous l’onglet **Surveillance** de la page **Créer un cluster Kubernetes**, décochez la case **Activer les métriques Prometheus** et sélectionnez **Vérifier + créer**.
+1. Sous l’onglet **Intégration** de la page **Créer un cluster Kubernetes**, dans la liste déroulante **Registre de conteneurs**, sélectionnez l’entrée représentant le registre de conteneurs Azure créé dans l’exercice précédent, vérifiez que l’option **Azure Policy**, puis sélectionnez **Suivant**.
+1. Sous l’onglet **Surveillance** de la page **Créer un cluster Kubernetes**, décochez la case **Activer les métriques Prometheus**, décochez la case **Activer les règles d’alerte recommandées**, puis sélectionnez **Vérifier + créer**.
 1. Sous l’onglet **Vérifier + créer** de la page **Créer un cluster Kubernetes**, sélectionnez **Créer**.
 
    > **Remarque :** Passez à l’exercice suivant sans attendre la fin du provisionnement du cluster AKS. Le processus de provisionnement peut prendre environ 5 minutes.
