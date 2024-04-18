@@ -138,7 +138,7 @@ Dans cette tâche, vous allez créer un réseau virtuel Azure et y déployer un 
 1. Dans la page **Ajouter un pool de nœuds**, sélectionnez **Ajouter**.
 1. De retour sous l’onglet **Pools de nœuds** de la page **Créer un cluster Kubernetes**, sélectionnez **Suivant**.
 1. Sous l’onglet **Réseau** de la page **Créer un cluster Kubernetes**, sélectionnez **Suivant**.
-1. Sous l’onglet **Intégration** de la page **Créer un cluster Kubernetes**, dans la liste déroulante **Registre de conteneurs**, sélectionnez l’entrée représentant le registre de conteneurs Azure créé dans l’exercice précédent, vérifiez que l’option **Azure Policy**, puis sélectionnez **Suivant**.
+1. Sous l’onglet **Intégration** de la page **Créer un cluster Kubernetes**, dans la liste déroulante **Registre de conteneurs**, sélectionnez l’entrée représentant le registre de conteneurs Azure créé dans l’exercice précédent, vérifiez que l’option **Azure Policy** est désactivée, puis sélectionnez **Suivant**.
 1. Sous l’onglet **Surveillance** de la page **Créer un cluster Kubernetes**, décochez la case **Activer les métriques Prometheus**, décochez la case **Activer les règles d’alerte recommandées**, puis sélectionnez **Vérifier + créer**.
 1. Sous l’onglet **Vérifier + créer** de la page **Créer un cluster Kubernetes**, sélectionnez **Créer**.
 
